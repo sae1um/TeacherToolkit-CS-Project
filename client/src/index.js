@@ -5,7 +5,7 @@ import App from './pages/Home/App';
 import "./index.css"
 import LoginPage from './components/onboarding/login';
 import RegisterPage from './components/onboarding/signup';
-import ErrorElementPage from './components/home/lib/errorElement';
+import ErrorElementPage from './components/lib/errorElement';
 
 const router = createBrowserRouter([
   {
