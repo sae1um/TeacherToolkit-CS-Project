@@ -24,7 +24,6 @@ const InputIconContainer = styled("div")({
 })
 
 export default function LoginPage() {
-    function handdleSubmit() { }
 
     return (
         <div className="flex flex-col min-h-screen bg-gradient-to-b from-[#ffc6c7] to-[#f7f7ff]">
@@ -34,7 +33,7 @@ export default function LoginPage() {
                     <h2 className="mt-3 text-3xl font-extrabold text-gray-900">
                         Login to your account
                     </h2>
-                    <form className="flex flex-col mt-6 space-y-3" onSubmit={handdleSubmit}>
+                    <form className="flex flex-col mt-6 space-y-3">
                         <div className="flex flex-col items-center justify-center">
                             <FormInnerBoxes>
                                 <InputIconContainer>
@@ -55,7 +54,7 @@ export default function LoginPage() {
                                     </div>
                                 </InputIconContainer>
                                 <input type="password" placeholder="Password" className="flex-1 p-2 border-none outline-none w-full h-full" />
-                            </FormInnerBoxes>
+                            </FormInnerBoxes>                            
                         </div>
                         
                         <div className="flex flex-col items-center justify-center gap-2">
@@ -69,6 +68,9 @@ export default function LoginPage() {
                                     <label for="login-student-radio" className="px-1">Student</label>
                                 </div>
                             </div>
+                        </div>
+                        <div>
+                            <button type="submit" className="w-1/3 rounded-md mt-1 bg-[#ff676a] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#ff9596] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">Login</button>
                         </div>
                     </form>
                     <div className="text-center">
