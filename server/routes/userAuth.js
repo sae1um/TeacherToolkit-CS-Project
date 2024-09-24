@@ -4,13 +4,15 @@ const {
     loginStudent,
     registerTeacher,
     registerStudent
-} = require("../controllers/onboarding");
+} = require("../controllers/authController");
 
 const router = express.router();
 
+// Registration pahts
 router.post("/resgiter/teacher", registerTeacher);
 router.post("/resgister/student", registerStudent);
 
+// Login paths
 router.get("/login/teacher", loginTeacher)
 router.get("/login/student", loginStudent)
 

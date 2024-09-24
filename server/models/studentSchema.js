@@ -2,7 +2,9 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const studentShchema = new Schema({
+
+// Schema for setting the database types and data names for students document (similar to SQL table)
+const studentSchema = new Schema({
     name: {
         type: String,
         required: true
@@ -29,4 +31,4 @@ const studentShchema = new Schema({
     }
 })
 
-module.exports = mongoose.model("Student", studentShchema);
+module.exports = mongoose.model("Student", studentSchema);

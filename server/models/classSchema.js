@@ -2,7 +2,8 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-const classShchema = new Schema({
+// Schema for setting the database types and data names
+const classSchema = new Schema({
     class: {
         type: String,
         required: true
@@ -17,4 +18,4 @@ const classShchema = new Schema({
     }
 });
 
-module.exports = mongoose.model("Class", classShchema);
+module.exports = mongoose.model("Class", classSchema);
