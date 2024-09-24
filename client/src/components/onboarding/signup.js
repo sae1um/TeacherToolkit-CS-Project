@@ -33,7 +33,10 @@ export default function RegisterPage(){
                     <h2 className="mt-3 text-3xl font-extrabold text-gray-900">
                         Register a new account
                     </h2>
-                    <form className="flex flex-col mt-6 space-y-3">
+                    <form 
+                    className="flex flex-col mt-6 space-y-3" 
+                    onSubmit={(e) => e.preventDefault()}
+                    >
                         <div className="flex flex-col items-center justify-center">
                             {/* Name */}
                             <FormInnerBoxes>
