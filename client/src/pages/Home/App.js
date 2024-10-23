@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
-import OnboardingHeader from "../../components/shared/onboardingHeader";
-import OnboardingFooter from "../../components/shared/onboardingFooter";
+import OnboardingHeader from "../../components/shared/OnboardingHeader";
+import OnboardingFooter from "../../components/shared/OnboardingFooter";
 
 export default function App() {
   return (

@@ -8,7 +8,7 @@ const selectedLinkClass = "flex flex-row gap-3 my-2 items-center px-4 py-2 font-
 
 export default function Sidebar({ role }){
     return(
-        <div className="flex flex-col w-72 fixed h-screen bg-white border border-t-slate-300">
+        <div className="flex flex-col w-72 h-full bg-white border border-t-slate-300 overflow-hidden">
             {
                 role === "teacher" ? 
                 <div className="flex-1 py-2 pr-4">
@@ -36,7 +36,7 @@ export default function Sidebar({ role }){
 
 function SidebarLink({ item }){
     const currentPath = useLocation().pathname;
-
+    
     return(
         <Link to={item.path} className={classnames(currentPath === item.path ? selectedLinkClass : defaultLinkClass)}>
             {

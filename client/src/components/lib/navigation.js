@@ -17,28 +17,28 @@ export const TEACHER_SIDEBAR_LINK = [
 		label: "Toolkit",
 		path: "/home/teacher/toolkit",
 		defaultIcon: <LiaToolsSolid />,
-		selecetedIcon: <IconContext.Provider value={{color: "white"}}><LiaToolsSolid /></IconContext.Provider>
+		selectedIcon: <IconContext.Provider value={{color: "white"}}><LiaToolsSolid /></IconContext.Provider>
 	},
 	{
 		key: "classes",
 		label: "Classes",
 		path: "/home/teacher/classes",
 		defaultIcon: <SiGoogleclassroom />,
-		selecetedIcon: <IconContext.Provider value={{color: "white"}}><SiGoogleclassroom /></IconContext.Provider>
+		selectedIcon: <IconContext.Provider value={{color: "white"}}><SiGoogleclassroom /></IconContext.Provider>
 	},
 	{
 		key: "assignments",
 		label: "Assignments",
-		path: "/home/teacher/assignments",
+		path: "/home/teacher/toolkit/assignments",
 		defaultIcon: <SlBookOpen />,
-		selecetedIcon: <IconContext.Provider value={{color: "white"}}><SlBookOpen /></IconContext.Provider>
+		selectedIcon: <IconContext.Provider value={{color: "white"}}><SlBookOpen /></IconContext.Provider>
 	},
 	{
 		key: "quiz",
 		label: "Quiz Maker",
-		path: "/home/teacher/quiz-maker",
+		path: "/home/teacher/toolkit/quiz-maker",
 		defaultIcon: <MdOutlineQuiz />,
-		selecetedIcon: <IconContext.Provider value={{color: "white"}}><MdOutlineQuiz /></IconContext.Provider>
+		selectedIcon: <IconContext.Provider value={{color: "white"}}><MdOutlineQuiz /></IconContext.Provider>
 	}
 ]
 
@@ -55,28 +55,28 @@ export const STUDENT_SIDEBAR_LINK = [
 		label: "Toolkit",
 		path: "/home/student/toolkit",
 		defaultIcon: <LiaToolsSolid />,
-		selecetedIcon: <IconContext.Provider value={{color: "white"}}><LiaToolsSolid /></IconContext.Provider>
+		selectedIcon: <IconContext.Provider value={{color: "white"}}><LiaToolsSolid /></IconContext.Provider>
 	},
 	{
 		key: "classes",
 		label: "Classes",
 		path: "/home/student/classes",
 		defaultIcon: <SiGoogleclassroom />,
-		selecetedIcon: <IconContext.Provider value={{color: "white"}}><SiGoogleclassroom /></IconContext.Provider>
+		selectedIcon: <IconContext.Provider value={{color: "white"}}><SiGoogleclassroom /></IconContext.Provider>
 	},
 	{
 		key: "assignments",
 		label: "Assignments",
 		path: "/home/student/assignments",
 		defaultIcon: <SlBookOpen />,
-		selecetedIcon: <IconContext.Provider value={{color: "white"}}><SlBookOpen /></IconContext.Provider>
+		selectedIcon: <IconContext.Provider value={{color: "white"}}><SlBookOpen /></IconContext.Provider>
 	},
 	{
 		key: "quiz",
 		label: "Quiz Menu",
 		path: "/home/student/join-quiz",
 		defaultIcon: <MdOutlineQuiz />,
-		selecetedIcon: <IconContext.Provider value={{color: "white"}}><MdOutlineQuiz /></IconContext.Provider>
+		selectedIcon: <IconContext.Provider value={{color: "white"}}><MdOutlineQuiz /></IconContext.Provider>
 	}
 ]
 

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import OnboardingHeader from "../shared/onboardingHeader";
-import OnboardingFooter from "../shared/onboardingFooter";
+import OnboardingHeader from "../shared/OnboardingHeader";
+import OnboardingFooter from "../shared/OnboardingFooter";
 import { IconContext } from "react-icons";
 import { SlEnvolope, SlLock } from "react-icons/sl";
 import { styled } from "@mui/system";
