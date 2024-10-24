@@ -1,3 +1,4 @@
+/*
 import { useState } from "react";
 
 export default function Testing(params) {
@@ -17,10 +18,10 @@ fetch(endpoint)
 
     return(
         <div>
-            <img src={catImg} />
             <button>
                 click
             </button>
         </div>
     )
 };
+*/
