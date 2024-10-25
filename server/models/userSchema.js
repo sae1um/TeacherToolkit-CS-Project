@@ -2,19 +2,16 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-// Schema for setting the database types and data names for teachers document (similar to SQL table)
-const teacherShchema = new Schema({
-    title: {
-        type: String,
-        required: true
-    },
+// Schema for a User to be added to Database
+const userhchema = new Schema({
     name: {
         type: String,
         required: true
     },
     email: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     password: {
         type: String,
@@ -28,10 +25,15 @@ const teacherShchema = new Schema({
         type: Object
     },
     // Teachers would have true
-    role: {
+    teacher: {
         type: Boolean,
         required: true
     }
 })
 
-module.exports = mongoose.model("Teacher", teacherSchema);
+// Static register method
+userScema.statics.register = async (email, password) => {
+    const exists = await User.find
+}
+
+module.exports = mongoose.model("User", userhchema);

@@ -1,19 +1,15 @@
 const express = require("express");
 const {
-    loginTeacher,
-    loginStudent,
-    registerTeacher,
-    registerStudent
+    loginUser,
+    registerUser
 } = require("../controllers/authController");
 
-const router = express.router();
+const router = express.Router();
 
 // Registration pahts
-router.post("/resgiter/teacher", registerTeacher);
-router.post("/resgister/student", registerStudent);
+router.post("/resgiter/:role", registerUser);
 
 // Login paths
-router.get("/login/teacher", loginTeacher)
-router.get("/login/student", loginStudent)
+router.get("/login/:role", loginUser);
 
 module.exports = router;
