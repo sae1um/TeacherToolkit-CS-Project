@@ -4,6 +4,7 @@ import OnboardingFooter from "../shared/OnboardingFooter";
 import { IconContext } from "react-icons";
 import { SlEnvolope, SlLock, SlUser, SlKey } from "react-icons/sl";
 import { styled } from "@mui/system";
+import { useState } from "react";
 
 const FormInnerBoxes = styled("div")({
     display: "flex",
@@ -24,7 +25,11 @@ const InputIconContainer = styled("div")({
 })
 
 export default function RegisterPage(){
-    
+    const [userRole, setUserRole] = useState();
+
+    function handleRegister(e){
+        e.prevenDefault();
+    }
     return(
         <div className="flex flex-col min-h-screen bg-gradient-to-b from-[#ffc6c7] to-[#f7f7ff]">
             <OnboardingHeader />
@@ -35,7 +40,7 @@ export default function RegisterPage(){
                     </h2>
                     <form 
                     className="flex flex-col mt-6 space-y-3" 
-                    onSubmit={(e) => e.preventDefault()}
+                    onSubmit={handleRegister}
                     >
                         <div className="flex flex-col items-center justify-center">
                             {/* Name */}
@@ -47,8 +52,8 @@ export default function RegisterPage(){
                                         </IconContext.Provider>
                                     </div>
                                 </InputIconContainer>
-                                <input type="text" placeholder="Firstname" className="flex-1 p-2 border-none outline-none w-full h-full" />
-                                <input type="text" placeholder="Surname" className="flex-1 p-2 border-l border-slate-300 outline-none w-full h-full" />
+                                <input type="text" placeholder="Firstname" required className="flex-1 p-2 border-none outline-none w-full h-full" />
+                                <input type="text" placeholder="Surname" required className="flex-1 p-2 border-l border-slate-300 outline-none w-full h-full" />
                             </FormInnerBoxes>
                             {/* Email */}
                             <FormInnerBoxes>
@@ -59,7 +64,7 @@ export default function RegisterPage(){
                                         </IconContext.Provider>
                                     </div>
                                 </InputIconContainer>
-                                <input type="email" placeholder="Email" className="flex-1 p-2 border-none outline-none w-full h-full" />
+                                <input type="email" placeholder="Email" required className="flex-1 p-2 border-none outline-none w-full h-full" />
                             </FormInnerBoxes>
                             {/* Password */}
                             <FormInnerBoxes>
@@ -70,7 +75,7 @@ export default function RegisterPage(){
                                         </IconContext.Provider>
                                     </div>
                                 </InputIconContainer>
-                                <input type="password" placeholder="Password" className="flex-1 p-2 border-none outline-none w-full h-full" />
+                                <input type="password" placeholder="Password" required className="flex-1 p-2 border-none outline-none w-full h-full" />
                             </FormInnerBoxes>
                             {/* Verification Code */}
                             <FormInnerBoxes>
@@ -81,17 +86,17 @@ export default function RegisterPage(){
                                         </IconContext.Provider>
                                     </div>
                                 </InputIconContainer>
-                                <input type="text" placeholder="Verification Code" className="flex-1 p-2 border-none outline-none w-full h-full" />
+                                <input type="text" placeholder="Verification Code" required className="flex-1 p-2 border-none outline-none w-full h-full" />
                             </FormInnerBoxes>
                         </div>
                         <div className="flex flex-col items-center justify-center gap-2">
                             <div className="flex gap-3 items-center justify-center">
                                 <div className="flex">
-                                    <input type="radio" id="login-teacher-radio" name="user-type-radio" className="shrink-0 mt-0.5 border-gray-200 rounded-full text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"/>
+                                    <input type="radio" id="login-teacher-radio" onClick={() => setUserRole("teacher")} name="user-type-radio" className="shrink-0 mt-0.5 border-gray-200 rounded-full text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"/>
                                     <label for="login-teacher-radio" className="px-1">Teacher</label>
                                 </div>
                                 <div className="flex">
-                                    <input id="login-student-radio" type="radio" name="user-type-radio" className="shrink-0 mt-0.5 border-gray-200 rounded-full text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"/>
+                                    <input id="login-student-radio" onClick={() => setUserRole("student")} type="radio" name="user-type-radio" className="shrink-0 mt-0.5 border-gray-200 rounded-full text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"/>
                                     <label for="login-student-radio" className="px-1">Student</label>
                                 </div>
                             </div>

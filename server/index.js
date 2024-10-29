@@ -1,6 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+dotenv.config();
 
 //Routes
 const userAuthRoutes = require("./routes/userAuth");
@@ -32,8 +34,8 @@ app.use("/auth", userAuthRoutes);
 
 // Connects to the database, uri is saved in an environment variable for security
 mongoose.connect(process.env.MONGODB_CONNECTION_URI)
-    .then(() => {  
-        app.listen(process.env.PORT, () => console.log("DB connected & Server started"))
+    .then(() => { 
+        app.listen(process.env.PORT, () => console.log(`DB connected & Server started 'http://localhost:${process.env.PORT}'`))
     })
     .catch((err) => console.log(err))
 
