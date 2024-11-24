@@ -1,4 +1,7 @@
 const express = require("express");
+/*
+const requireAuth = require("")
+*/
 const {
     loginUser,
     registerUser
@@ -6,16 +9,12 @@ const {
 
 const router = express.Router();
 
-// Registration pahts
+// router.use(requrieAuth);
+
+// Registration paths
 router.post("/register", registerUser);
-// router.post("/resgiter/:role", registerUser);
 
 // Login paths
-router.get("/login/:role", loginUser);
-
-router.get("/test:role:code", (req, res) => {
-    const {role, code} = req.params;
-    res.json("test working")
-})
+router.post("/login", loginUser);
 
 module.exports = router;

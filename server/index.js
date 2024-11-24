@@ -19,20 +19,20 @@ app.use(cors());
 app.use((req, res, next) => {
     console.log(req.method, req.path);
     next();
-})
+});
 
 // Default route for the api
 app.get("/", (req, res) => {
-    res.status(200).json("Api Routes");
-})
+    res.json("Base Routes");
+});
 
 /*
 *   User Authentication route
-*   Then the outher sub routes are in the "userAuthRoutes" router
+*   sub routes are part of "userAuthRoutes" router
 */
 app.use("/auth", userAuthRoutes);
 
-// Connects to the database, uri is saved in an environment variable for security
+// Connects to the database, and starts backend server
 mongoose.connect(process.env.MONGODB_CONNECTION_URI)
     .then(() => { 
         app.listen(process.env.PORT, () => console.log(`DB connected & Server started 'http://localhost:${process.env.PORT}'`))

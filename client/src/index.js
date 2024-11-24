@@ -1,13 +1,18 @@
 // PACKAGE IMPORTS
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Navigate } from "react-router-dom";
 import App from "./pages/Home/App";
 import "./index.css";
 
+// Extras
+import ProtectedRoute from "./components/ProtectedRoute"
+
+// CONTEXT
+import { AuthContextProvider } from "./context/AuthContext";
+// import { useAuthContext } from "./hooks/useAuthContext";
+
 // COMPONENT AND PAGE IMPORTS
-import LoginPage from "./components/onboarding/Login";
-import RegisterPage from "./components/onboarding/Signup";
 import ErrorElementPage from "./components/lib/errorElement";
 import Testing from "./components/testing/testing";
 
@@ -39,7 +44,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "teacher",
-        element: <TeacherLayout />,
+        element:(<ProtectedRoute><TeacherLayout /></ProtectedRoute>),
         children: [
           { index: true, element: <TeacherHomeGrid /> },
           { path: "classes", element: <TeacherClasses /> },
@@ -56,11 +61,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/login",
-    element: <LoginPage />,
+    element: (<ProtectedRoute path={"login"}><Navigate to="/home/teacher" /></ProtectedRoute>)
   },
   {
     path: "/register",
-    element: <RegisterPage />,
+    element: (<ProtectedRoute path={"register"}><Navigate to="/home/teacher" /></ProtectedRoute>)
   },
   // REMOVE TESTING
   {
@@ -71,6 +76,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <AuthContextProvider>
+      <RouterProvider router={router} />
+    </AuthContextProvider>
   </React.StrictMode>
 );

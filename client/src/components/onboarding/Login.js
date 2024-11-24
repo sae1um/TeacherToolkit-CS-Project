@@ -5,6 +5,7 @@ import { IconContext } from "react-icons";
 import { SlEnvolope, SlLock } from "react-icons/sl";
 import { styled } from "@mui/system";
 import { useState } from "react";
+import {useLogin} from "../../hooks/useLogin"
 
 const FormInnerBoxes = styled("div")({
     display: "flex",
@@ -25,10 +26,13 @@ const InputIconContainer = styled("div")({
 })
 
 export default function LoginPage() {
-    const [userRole, setUserRole] = useState();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const { login, isLoading, error } = useLogin();
 
-    function handleLogin(e){
-        e.prevenDefault();
+    const handleLogin = async (e) => {
+        e.preventDefault();
+        await login(email, password);
     }
 
     return (
@@ -52,7 +56,7 @@ export default function LoginPage() {
                                         </IconContext.Provider>
                                     </div>
                                 </InputIconContainer>
-                                <input type="email" placeholder="Email" required className="flex-1 p-2 border-none outline-none w-full h-full" />
+                                <input type="email" placeholder="Email"  onChange={(e) => setEmail(e.target.value)} required value={email} className="flex-1 p-2 border-none outline-none w-full h-full" />
                             </FormInnerBoxes>
                             <FormInnerBoxes>
                                 <InputIconContainer>
@@ -62,24 +66,17 @@ export default function LoginPage() {
                                         </IconContext.Provider>
                                     </div>
                                 </InputIconContainer>
-                                <input type="password" placeholder="Password" required className="flex-1 p-2 border-none outline-none w-full h-full" />
+                                <input type="password" placeholder="Password" required onChange={(e) => setPassword(e.target.value)} value={password} className="flex-1 p-2 border-none outline-none w-full h-full" />
                             </FormInnerBoxes>                            
                         </div>
-                        
-                        <div className="flex flex-col items-center justify-center gap-2">
-                            <div className="flex gap-3 items-center justify-center">
-                                <div className="flex">
-                                    <input type="radio" id="login-teacher-radio" onClick={() => setUserRole("teacher")} required name="user-type-radio" className="shrink-0 mt-0.5 border-gray-200 rounded-full text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"/>
-                                    <label for="login-teacher-radio" className="px-1">Teacher</label>
-                                </div>
-                                <div className="flex">
-                                    <input id="login-student-radio" type="radio" onClick={() => setUserRole("student")} required name="user-type-radio" className="shrink-0 mt-0.5 border-gray-200 rounded-full text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"/>
-                                    <label for="login-student-radio" className="px-1">Student</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-                            <button type="submit" className="w-1/3 rounded-md mt-1 bg-[#ff676a] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#ff9596] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">Login</button>
+                        <div className="flex flex-col items-center justify-center">
+                            <button type="submit" disabled={isLoading} className="w-1/3 rounded-md mt-1 bg-[#ff676a] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#ff9596] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">Login</button>
+                            {
+                                error && 
+                                    <div className="text-red-400">
+                                        {error}
+                                    </div>
+                            }
                         </div>
                     </form>
                     <div className="text-center">

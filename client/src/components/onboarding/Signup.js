@@ -5,6 +5,7 @@ import { IconContext } from "react-icons";
 import { SlEnvolope, SlLock, SlUser, SlKey } from "react-icons/sl";
 import { styled } from "@mui/system";
 import { useState } from "react";
+import { useRegister } from "../../hooks/useRegister"
 
 const FormInnerBoxes = styled("div")({
     display: "flex",
@@ -25,10 +26,23 @@ const InputIconContainer = styled("div")({
 })
 
 export default function RegisterPage(){
-    const [userRole, setUserRole] = useState();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [firstname, setFirstname] = useState("");
+    const [lastname, setLastname] = useState("");
 
-    function handleRegister(e){
-        e.prevenDefault();
+    const [verificationCode, setVerificationCode] = useState("");
+    const [role, setUserRole] = useState();
+    
+    const {register, error, isLoading } = useRegister();
+
+
+    async function handleRegister(e){
+        e.preventDefault();
+        console.log(firstname, lastname, email, password, role, verificationCode);
+        await register(firstname, lastname, email, password, role, verificationCode);
+
+        // console.log(email, password, firstname, lastname, verificationCode);
     }
     return(
         <div className="flex flex-col min-h-screen bg-gradient-to-b from-[#ffc6c7] to-[#f7f7ff]">
@@ -52,8 +66,8 @@ export default function RegisterPage(){
                                         </IconContext.Provider>
                                     </div>
                                 </InputIconContainer>
-                                <input type="text" placeholder="Firstname" required className="flex-1 p-2 border-none outline-none w-full h-full" />
-                                <input type="text" placeholder="Surname" required className="flex-1 p-2 border-l border-slate-300 outline-none w-full h-full" />
+                                <input type="text" placeholder="Firstname" required onChange={(e) => setFirstname(e.target.value)} value={firstname} className="flex-1 p-2 border-none outline-none w-full h-full" />
+                                <input type="text" placeholder="Surname" required onChange={(e) => setLastname(e.target.value)} value={lastname} className="flex-1 p-2 border-l border-slate-300 outline-none w-full h-full" />
                             </FormInnerBoxes>
                             {/* Email */}
                             <FormInnerBoxes>
@@ -64,7 +78,7 @@ export default function RegisterPage(){
                                         </IconContext.Provider>
                                     </div>
                                 </InputIconContainer>
-                                <input type="email" placeholder="Email" required className="flex-1 p-2 border-none outline-none w-full h-full" />
+                                <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} required value={email} className="flex-1 p-2 border-none outline-none w-full h-full" />
                             </FormInnerBoxes>
                             {/* Password */}
                             <FormInnerBoxes>
@@ -75,7 +89,7 @@ export default function RegisterPage(){
                                         </IconContext.Provider>
                                     </div>
                                 </InputIconContainer>
-                                <input type="password" placeholder="Password" required className="flex-1 p-2 border-none outline-none w-full h-full" />
+                                <input type="password" placeholder="Password" required onChange={(e) => setPassword(e.target.value)} value={password} className="flex-1 p-2 border-none outline-none w-full h-full" />
                             </FormInnerBoxes>
                             {/* Verification Code */}
                             <FormInnerBoxes>
@@ -86,7 +100,7 @@ export default function RegisterPage(){
                                         </IconContext.Provider>
                                     </div>
                                 </InputIconContainer>
-                                <input type="text" placeholder="Verification Code" required className="flex-1 p-2 border-none outline-none w-full h-full" />
+                                <input type="text" placeholder="Verification Code" required onChange={(e) => setVerificationCode(e.target.value)} value={verificationCode} className="flex-1 p-2 border-none outline-none w-full h-full" />
                             </FormInnerBoxes>
                         </div>
                         <div className="flex flex-col items-center justify-center gap-2">
@@ -101,8 +115,14 @@ export default function RegisterPage(){
                                 </div>
                             </div>
                         </div>
-                        <div>
-                            <button type="submit" className="w-1/3 rounded-md mt-1 bg-[#ff676a] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#ff9596] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">Register</button>
+                        <div className="flex flex-col items-center justify-center">
+                            <button type="submit" disabled={isLoading} className="w-1/3 rounded-md mt-1 bg-[#ff676a] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#ff9596] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">Register</button>
+                            {
+                                error && 
+                                    <div className="text-red-400">
+                                        {error}
+                                    </div>
+                            }
                         </div>
                         </form>
                     <div className="text-center">
