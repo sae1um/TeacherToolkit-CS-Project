@@ -16,7 +16,7 @@ export default function TeacherHomeGrid() {
                 <div><CgProfile /></div>
                 <div className="flex flex-col">
                     <span>{[user.firstname, " ", user.lastname]}</span>
-                    <span className="font-normal text-lg">Teacher</span>
+                    <span className="font-normal text-lg">{user.role}</span>
                 </div>
                 <Button>Edit Profile</Button>
             </div>

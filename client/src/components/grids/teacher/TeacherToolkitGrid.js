@@ -7,7 +7,7 @@ import { HiSpeakerphone } from "react-icons/hi";
 export default function TeacherToolkitGrid() {
     return(
         <div>
-            <div className="grid grid-cols-2 gap-4 px-4 ">
+            <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-4 px-4 ">
                 <GridBoxes name={"Random Student Picker"} description={"Select a student at random from your classroom"} icon={<FaDice />} colour={"blue"} link={"student-picker"}/>
                 <GridBoxes name={"Timer/Countdown"} description={"Set timers or start countdown for activities"} icon={<MdTimer />} colour={"red"} link={"timer"}/>
                 <GridBoxes name={"Whiteboard"} description={"Collaborate with students to jot down ideas"} icon={<FaChalkboardTeacher />} colour={"purple"} link={"whiteboard"}/>

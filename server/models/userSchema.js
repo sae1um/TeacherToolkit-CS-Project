@@ -28,7 +28,17 @@ const userSchema = new Schema({
         type: String,
         enum: ["teacher", "student"],
         required: true
-    }
+    },
+    yearGroup:{
+        type: String,
+        enum: ["Year 7", "Year 8", "Year 9", "Year 10", "Year 10", "Year 11", "Year 12", "Year 13"]
+    },
+    classIds: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Class"
+        }
+    ]
 })
 
 // Register method
@@ -73,7 +83,7 @@ userSchema.statics.register = async function(email, password, role, verification
     
     // Create new user
     const user = await this.create({ firstname, lastname, email, password: hash, role});
-
+    // user.uid = this.ObjectId;
     // Sends user obj back to API
     return user;
 }

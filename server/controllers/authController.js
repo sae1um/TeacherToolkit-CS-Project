@@ -13,7 +13,7 @@ const loginUser = async(req, res) => {
         const user = await User.login(email, password);
         const { firstname, lastname } = user;
         const token = createToken(user._id);
-        res.status(200).json({status: "User found", email, token, firstname, lastname});
+        res.status(200).json({status: "User found", email, token, firstname, lastname, role: user.role, uid: user._id });
     }catch(err){
         res.status(400).json({error: err.message});
     }
@@ -27,8 +27,9 @@ const registerUser = async (req, res) => {
         
         //create an auth token
         const token = createToken(user._id);
+        console.log(user._id);
         // Response
-        res.status(200).json({mssg: "User created successfully", email, token, firstname, lastname, role});
+        res.status(200).json({mssg: "User created successfully", email, token, firstname, lastname, role, uid: user._id});
 
     }catch(err){
         res.status(400).json({error: err.message});

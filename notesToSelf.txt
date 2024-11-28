@@ -28,3 +28,11 @@ TODO:
     - AuthController
 - Changing from Axios to Vanilla JS fetch()
 
+
+
+========= LOGIN DETAILS =========
+teacher:
+    testaccount1@gmail.com
+    Password123!
+student:
+    

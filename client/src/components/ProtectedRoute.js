@@ -14,5 +14,10 @@ export default function ProtectedRoute({ children, path }) {
     }
 
     // If a user exists, render the child component /home/role
+    // if(user.role === "student"){
+    //     return children;
+    // }else if(user.role === "teacher"){
+    //     return children;
+    // }
     return children;
 }

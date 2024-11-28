@@ -12,12 +12,14 @@ const colourClasses = {
 
 export default function GridBoxes({ name, icon, colour, description, link}) {
     return(
-        <Link to={`${link}`} className={`flex flex-row justify-between ${colourClasses[colour]} text-white w-full mt-4 py-8 px-6 rounded-xl `}>
-                <div className="">
+        <Link to={`${link}`} 
+            className={`flex flex-row justify-between ${colourClasses[colour]} text-white w-full mt-4 py-8 px-6 rounded-xl hover:${colourClasses[colour]}-`}
+        >
+                <div className="gap-1">
                     <h2 className="font-extrabold text-3xl">
                         {name}
                     </h2>
-                    <p className=" font-semibold">
+                    <p className="flex flex-row items-center gap-2 font-semibold">
                         {description}
                     </p>
                 </div>

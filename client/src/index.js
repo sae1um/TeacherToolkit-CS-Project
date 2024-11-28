@@ -14,7 +14,6 @@ import { AuthContextProvider } from "./context/AuthContext";
 
 // COMPONENT AND PAGE IMPORTS
 import ErrorElementPage from "./components/lib/errorElement";
-import Testing from "./components/testing/testing";
 
 // Layouts
 import TeacherLayout from "./layouts/TeacherLayout";
@@ -56,7 +55,7 @@ const router = createBrowserRouter([
           { path: "toolkit/whiteboard", element: <TeacherWhiteboardPage />, },
         ],
       },
-      { path: "student", element: <StudentLayout />},
+      { path: "student", element: <ProtectedRoute ><StudentLayout /></ProtectedRoute>},
     ],
   },
   {
@@ -66,12 +65,7 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: (<ProtectedRoute path={"register"}><Navigate to="/home/teacher" /></ProtectedRoute>)
-  },
-  // REMOVE TESTING
-  {
-    path: "/testing",
-    element: <Testing />,
-  },
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(

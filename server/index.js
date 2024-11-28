@@ -6,6 +6,7 @@ dotenv.config();
 
 //Routes
 const userAuthRoutes = require("./routes/userAuth");
+const classRoutes = require("./routes/classes");
 
 const app = express();
 
@@ -31,6 +32,9 @@ app.get("/", (req, res) => {
 *   sub routes are part of "userAuthRoutes" router
 */
 app.use("/auth", userAuthRoutes);
+
+// Routes controller for classes
+app.use("/classes", classRoutes);
 
 // Connects to the database, and starts backend server
 mongoose.connect(process.env.MONGODB_CONNECTION_URI)
