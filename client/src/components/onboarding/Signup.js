@@ -5,7 +5,8 @@ import { IconContext } from "react-icons";
 import { SlEnvolope, SlLock, SlUser, SlKey } from "react-icons/sl";
 import { styled } from "@mui/system";
 import { useState } from "react";
-import { useRegister } from "../../hooks/useRegister"
+import { useRegister } from "../../hooks/useRegister";
+import { ProgressBar } from "react-loader-spinner"
 
 const FormInnerBoxes = styled("div")({
     display: "flex",
@@ -25,7 +26,7 @@ const InputIconContainer = styled("div")({
     justifyContent: "center"
 })
 
-export default function RegisterPage(){
+export default function RegisterPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [firstname, setFirstname] = useState("");
@@ -33,18 +34,18 @@ export default function RegisterPage(){
 
     const [verificationCode, setVerificationCode] = useState("");
     const [role, setUserRole] = useState();
-    
-    const {register, error, isLoading } = useRegister();
+
+    const { register, error, isLoading } = useRegister();
 
 
-    async function handleRegister(e){
+    async function handleRegister(e) {
         e.preventDefault();
         console.log(firstname, lastname, email, password, role, verificationCode);
         await register(firstname, lastname, email, password, role, verificationCode);
 
         // console.log(email, password, firstname, lastname, verificationCode);
     }
-    return(
+    return (
         <div className="flex flex-col min-h-screen bg-gradient-to-b from-[#ffc6c7] to-[#f7f7ff]">
             <OnboardingHeader />
             <main className=" flex flex-col flex-grow justify-center items-center text-center px-4">
@@ -52,16 +53,16 @@ export default function RegisterPage(){
                     <h2 className="mt-3 text-3xl font-extrabold text-gray-900">
                         Register a new account
                     </h2>
-                    <form 
-                    className="flex flex-col mt-6 space-y-3" 
-                    onSubmit={handleRegister}
+                    <form
+                        className="flex flex-col mt-6 space-y-3"
+                        onSubmit={handleRegister}
                     >
                         <div className="flex flex-col items-center justify-center">
                             {/* Name */}
                             <FormInnerBoxes>
                                 <InputIconContainer>
                                     <div className="py-2 px-3">
-                                        <IconContext.Provider value={{ color: "white"}}>
+                                        <IconContext.Provider value={{ color: "white" }}>
                                             <SlUser />
                                         </IconContext.Provider>
                                     </div>
@@ -73,7 +74,7 @@ export default function RegisterPage(){
                             <FormInnerBoxes>
                                 <InputIconContainer>
                                     <div className="py-2 px-3">
-                                        <IconContext.Provider value={{ color: "white"}}>
+                                        <IconContext.Provider value={{ color: "white" }}>
                                             <SlEnvolope />
                                         </IconContext.Provider>
                                     </div>
@@ -84,7 +85,7 @@ export default function RegisterPage(){
                             <FormInnerBoxes>
                                 <InputIconContainer>
                                     <div className="py-2 px-3">
-                                        <IconContext.Provider value={{ color: "white"}}>
+                                        <IconContext.Provider value={{ color: "white" }}>
                                             <SlLock />
                                         </IconContext.Provider>
                                     </div>
@@ -95,7 +96,7 @@ export default function RegisterPage(){
                             <FormInnerBoxes>
                                 <InputIconContainer>
                                     <div className="py-2 px-3">
-                                        <IconContext.Provider value={{ color: "white"}}>
+                                        <IconContext.Provider value={{ color: "white" }}>
                                             <SlKey />
                                         </IconContext.Provider>
                                     </div>
@@ -106,25 +107,33 @@ export default function RegisterPage(){
                         <div className="flex flex-col items-center justify-center gap-2">
                             <div className="flex gap-3 items-center justify-center">
                                 <div className="flex">
-                                    <input type="radio" id="login-teacher-radio" onClick={() => setUserRole("teacher")} name="user-type-radio" className="shrink-0 mt-0.5 border-gray-200 rounded-full text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"/>
+                                    <input type="radio" id="login-teacher-radio" onClick={() => setUserRole("teacher")} name="user-type-radio" className="shrink-0 mt-0.5 border-gray-200 rounded-full text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" />
                                     <label for="login-teacher-radio" className="px-1">Teacher</label>
                                 </div>
                                 <div className="flex">
-                                    <input id="login-student-radio" onClick={() => setUserRole("student")} type="radio" name="user-type-radio" className="shrink-0 mt-0.5 border-gray-200 rounded-full text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800"/>
+                                    <input id="login-student-radio" onClick={() => setUserRole("student")} type="radio" name="user-type-radio" className="shrink-0 mt-0.5 border-gray-200 rounded-full text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:checked:bg-blue-500 dark:checked:border-blue-500 dark:focus:ring-offset-gray-800" />
                                     <label for="login-student-radio" className="px-1">Student</label>
                                 </div>
                             </div>
                         </div>
                         <div className="flex flex-col items-center justify-center">
-                            <button type="submit" disabled={isLoading} className="w-1/3 rounded-md mt-1 bg-[#ff676a] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#ff9596] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">Register</button>
+                            <button type="submit" disabled={isLoading} className="flex items-center justify-center w-1/3 px-3.5 py-2.5 rounded-md mt-1 bg-[#ff676a]  text-sm font-semibold text-white shadow-sm hover:bg-[#ff9596] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
+                                { !isLoading ? "Register" :  
+                                    <ProgressBar visible={true}
+                                    width= "300"
+                                    barColor="#2563eb"
+                                    borderColor="#ffffff"
+                                    ariaLabel="progress-bar-loading" />
+                                }
+                            </button>
                             {
-                                error && 
-                                    <div className="text-red-400">
-                                        {error}
-                                    </div>
+                                error &&
+                                <div className="text-red-400">
+                                    {error}
+                                </div>
                             }
                         </div>
-                        </form>
+                    </form>
                     <div className="text-center">
                         Already have an account?&nbsp;
                         <Link to="/login" className="font-medium text-blue-600 hover:text-blue-500">

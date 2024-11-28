@@ -1,0 +1,30 @@
+TODO:
+- Add way to insert new students to list in student picker
+- Creat class schema
+    - Add students to class
+    - Urgent Notices
+    - Teachers to add students to class (Optional => Consider making use by teacher only)
+- Teachers Todo List
+- Applications scree => Be able to add/access all other platforms without needing to go looking for them (Ask Eggleton)
+    - Links to YT, Teams, Onedrive, Desmos, Classcharts, PowerPoint, Word
+======= OUTSIDE SCOPE OF CS PROJECT
+    - AI Quiz Maker
+    - Assignment Tracker
+    - YouTube playlist
+    - Seating Plan Maker
+
+
+======== DOMCUMENT =========
+- Random student picker update
+    - Add new student
+    - Remove student directly from list
+    - 
+- Login/Signup
+    - New/changed DOM routing
+    - Hooks
+    - AuthContext
+    - Backend Routes
+    - User Schema and methods
+    - AuthController
+- Changing from Axios to Vanilla JS fetch()
+

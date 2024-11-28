@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react"
 import { TeacherClasses } from "../../helpers/TestClasses"
-import Button from "@mui/material/Button"
+import {Button, TextField} from "@mui/material"
 import { TailSpin } from "react-loader-spinner"
+import { MdCancel } from "react-icons/md";
+
 
 export default function ToolkitStudentPicker() {
     // Classes
@@ -11,6 +13,9 @@ export default function ToolkitStudentPicker() {
     // Students from the selected class
     const [studentList, setStudentList] = useState([]); // List of students from the class
     const [chosenStudent, setChosenStudent] = useState(""); // Student that is chosen from the randomiser
+
+    // TextBox values
+    const [newStudent, setNewStudent] = useState("");
 
     // Set loading state
     const [choosingStudenLoading, setChoosingStudentLoading] = useState(false);
@@ -62,6 +67,7 @@ export default function ToolkitStudentPicker() {
             return
         }
         const studentToRemove = chosenStudent;
+        // THIS REMOVES ALL THE INSTANCES (users with same names affected), USE INDEXES
         const tempStudentList = studentList.filter(student => student !== studentToRemove);
 
         // Update the rendered list
@@ -70,10 +76,26 @@ export default function ToolkitStudentPicker() {
         setChosenStudent("");
     }
 
+    function removeListStudent(studentIndex){
+        // Make copy of studentList
+        const tempStudentList = [...studentList];
+        // Remove student
+        tempStudentList.splice(studentIndex, 1) ;
+        // Set back to list
+        setStudentList(tempStudentList);
+    }
+
+    function addNewStudentToList(){
+        if(newStudent.trim()){
+            setStudentList([...studentList, newStudent.trim()]);
+            setNewStudent("");
+        }
+    }
+
     //Class Dropdown Selecter => Students of that classes are loaded up => Remove students from class => randomise => Remove student or Clear Student
     return (
-        <div className="flex h-full justify-center">
-            <div className="flex flex-col items-center w-1/2 h- mt-4 p-4 bg-white shadow-lg rounded-lg gap-2">
+        <div className="flex h-full justify-center px-4">
+            <div className="flex flex-col items-center w-full h- mt-4 p-4 mx-10 bg-white shadow-lg rounded-lg gap-2">
                 <h3 className="font-bold text-2xl">Random Student Picker</h3>
                 <div className="flex flex-row gap-2">
                     <p className="font-bold">Choose your Class:</p>
@@ -95,12 +117,14 @@ export default function ToolkitStudentPicker() {
                 <div className="flex flex-row w-full justify-between p-4">
                     {/* List of students from the selected class to pick from */}
                     <div className="flex items-center justify-center flex-col w-1/3 bg-slate-200 border border-slate-500 p-5 rounded-md">
-                        <h4 className="font-bold text-xl w-full text-center border border-b-slate-500 pb-2 mb-3">Choices</h4>
+                        <h4 className="font-bold text-xl w-full text-center border border-b-slate-500 pb-2 mb-3">Students</h4>
                         {
                             studentList && (
                                 <ul className="flex flex-col gap-2">
                                     {studentList.map((student, index) => (
-                                        <li key={index} className="text-center">{student}</li>
+                                        <div className="flex flex-row">
+                                            <li key={index} className="text-center">{student}</li><button onClick={() => removeListStudent(index)}><MdCancel /></button>
+                                        </div>
                                     ))}
                                 </ul>
                             )
@@ -120,8 +144,6 @@ export default function ToolkitStudentPicker() {
                                         color="#ff8587"
                                         ariaLabel="tail-spin-loading"
                                         radius="1"
-                                        wrapperStyle={{}}
-                                        wrapperClass=""
                                     /> : <span className="text-center p-2 m-1"> {chosenStudent} </span>
                             }
                         </div>
@@ -130,6 +152,10 @@ export default function ToolkitStudentPicker() {
                             <Button variant="outlined" onClick={removePickedStudent} color="error">Remove Student</Button>
                         </div>
                     </div>
+                </div>
+                <div>
+                    <TextField value={newStudent} onChange={(e) => setNewStudent(e.target.value)} label="Student Name" placeholder="Enter new student" color="info" />
+                    <Button onClick={addNewStudentToList} variant="contained" color="primary">Add Student</Button>
                 </div>
             </div>
         </div>
