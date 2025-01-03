@@ -11,14 +11,17 @@ export const useLogin = () => {
         setIsLoading(true);
         setError(null);
 
-        const url = "https://literate-garbanzo-9r4xwvgq5q6c9x49-3030.app.github.dev/auth/login";
+        // PROD URL REMOVE FOR PROJECT
+        const url = "";
+        
+        // const url = "https://literate-garbanzo-9r4xwvgq5q6c9x49-3030.app.github.dev/auth/login";
         // const url = "http://localhost:3030/auth/login";
 
         const response = await fetch(url, {
             method: 'POST',
             headers: { 
                 'Content-Type': 'application/json',
-                "X-Github-Token": "ghu_VR8qSqRkhHGoYWpxldKABXuWGUObtI3cfsWx"
+                // "X-Github-Token": "ghu_VR8qSqRkhHGoYWpxldKABXuWGUObtI3cfsWx"
             },
             body: JSON.stringify({ email, password })
             
