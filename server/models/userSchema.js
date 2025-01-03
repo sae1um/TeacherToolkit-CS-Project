@@ -67,7 +67,7 @@ userSchema.statics.register = async function(email, password, role, verification
     }
     
     // If teacher then set true else set false
-    const isTeacher = role === "Teacher";
+    const isTeacher = role === "teacher";
     // Check teacher codes if true, check students if false
     const validCodes = isTeacher ? codesList.teacher_codes : codesList.student_codes;
 
