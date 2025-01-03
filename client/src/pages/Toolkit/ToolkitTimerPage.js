@@ -61,11 +61,18 @@ export default function ToolkitTimerPage() {
 
     // Function that starts the timer
     function startTimer(){
-        if(hours !== 0 || minutes !== 0 || seconds !== 0 || milliseconds !==0){
+        if(hours !== 0 || minutes !== 0 || seconds !== 0 || milliseconds !== 0){
+            // if input number is bigger than max then set to max
+            if(hours > 24){setHours(24)}
+            if(minutes > 60){setMinutes(60)}
+            if(seconds > 60){setSeconds(60)}
             setIsRunning(true);
             setShowEndScreen({...showEndScreen, show: false});
+        }else if(hours < 0 || minutes < 0 || seconds < 0 || milliseconds < 0){
+            // Alert when negative
+            window.alert("Time cannot be negative!")
         }else{
-            window.alert("Add Time.");
+            window.alert("Add a Time.");
         }
     }
 

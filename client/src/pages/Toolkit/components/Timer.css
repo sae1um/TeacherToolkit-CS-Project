@@ -1,0 +1,23 @@
+.timerInput{
+    padding: 0.25rem;
+    width: 4rem;
+    --tw-bg-opacity: 1;
+    background-color: rgb(148 163 184);
+    border-radius: 0.5rem;
+    text-align: center;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 800;
+}
+
+.timerInput::-webkit-outer-spin-button,
+.timerInput::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+/* Firefox */
+.timerInput[type="number"]{
+    -moz-appearance: textfield;
+}

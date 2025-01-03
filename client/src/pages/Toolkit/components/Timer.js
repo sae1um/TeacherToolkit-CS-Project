@@ -1,4 +1,5 @@
 import { MdTimer } from "react-icons/md";
+import "./Timer.css"
 
 export default function Timer({milliseconds, seconds, minutes, hours, changeHours, changeMinutes, changeSeconds}){
     return(
@@ -6,19 +7,34 @@ export default function Timer({milliseconds, seconds, minutes, hours, changeHour
             <MdTimer className="text-8xl"/>
             <div className="flex flex-col w-1/6 items-center drop-shadow-md">
                 <label className="">hh</label>
-                <input value={hours} onChange={changeHours} className="w-16 bg-slate-400 rounded-lg text-center text-2xl font-extrabold p-1"/>
+                <input 
+                    type="number" 
+                    min={0} max={24} value={hours} onChange={changeHours} 
+                    className={"timerInput"}
+                />
             </div>{" "}
             <div className="flex flex-col w-1/6 items-center drop-shadow-md">
                 <label className="">mm</label>
-                <input value={minutes} onChange={changeMinutes} className="w-16 bg-slate-400 rounded-lg text-center text-2xl font-extrabold p-1"/>
+                <input 
+                    type="number" 
+                    min={0} max={60} value={minutes} onChange={changeMinutes} 
+                    className={"timerInput"}
+                />
             </div>{" "}
             <div className="flex flex-col w-1/6 items-center drop-shadow-md">
                 <label className="">ss</label>
-                <input value={seconds} onChange={changeSeconds} placeholder="00" className="w-16 bg-slate-400 rounded-lg text-center text-2xl font-extrabold p-1"/>
+                <input 
+                    type="number" 
+                    min={0} max={60} value={seconds} onChange={changeSeconds} 
+                    placeholder="00" className={"timerInput"}
+                />
             </div>{" "}
             <div className="flex flex-col w-1/6 items-center drop-shadow-md">
                 <label className="">ms</label>
-                <input value={milliseconds} className="w-16 bg-slate-400 rounded-lg text-center text-2xl font-extrabold p-1"/>
+                <input 
+                    value={milliseconds} 
+                    className={"timerInput"}
+                />
             </div>{" "}
         </div>
     )

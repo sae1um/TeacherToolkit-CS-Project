@@ -1,15 +1,7 @@
 const express = require("express");
-/*
-const requireAuth = require("")
-*/
-const {
-    loginUser,
-    registerUser
-} = require("../controllers/authController");
+const { loginUser, registerUser } = require("../controllers/authController");
 
 const router = express.Router();
-
-// router.use(requrieAuth);
 
 // Registration paths
 router.post("/register", registerUser);

@@ -1,14 +1,15 @@
 import { useState } from "react";
 
 import GridBoxes, { } from "../../components/shared/boxes/GridBoxes"
+import NewClassModal from "../../components/forms/NewClassModal";
 
 import { CiCirclePlus } from "react-icons/ci";
 import { GoPeople } from "react-icons/go";
+import { RxCross1 } from "react-icons/rx";
 
 import { Button } from "@mui/material"
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
-import NewClassModal from "../../components/forms/NewClassModal";
 
 const style = {
     position: 'absolute',
@@ -66,8 +67,9 @@ export default function TeacherClassesGrid(params) {
     }
     return (
         <div>
-            <Modal open={isDialogOpen} onClose={handleClose}>
+            <Modal open={isDialogOpen} >
                 <Box sx={style}>
+                    <button onClick={handleClose}><RxCross1/></button>
                     <NewClassModal />
                 </Box>
             </Modal>

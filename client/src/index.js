@@ -31,6 +31,8 @@ import TeacherAssignmentsPage from "./pages/Toolkit/ToolkitAssignmentsPage";
 import TeacherWhiteboardPage from "./pages/Toolkit/ToolkitWhiteboardPage";
 import ToolkitQuizPage from "./pages/Toolkit/ToolkitQuizPage";
 import ToolkitStudentPicker from "./pages/Toolkit/ToolkitStudentPickerPage";
+// import { ClassContextProvider } from "./context/ClassContext";
+import TestPage from "./csTests";
 
 const router = createBrowserRouter([
   {
@@ -65,13 +67,19 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: (<ProtectedRoute path={"register"}><Navigate to="/home/teacher" /></ProtectedRoute>)
+  },
+  {
+    path: "/test",
+    element: <TestPage />
   }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <AuthContextProvider>
-      <RouterProvider router={router} />
+      {/* <ClassContextProvider> */}
+        <RouterProvider router={router} />
+      {/* </ClassContextProvider> */}
     </AuthContextProvider>
   </React.StrictMode>
 );

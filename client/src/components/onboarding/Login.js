@@ -6,6 +6,7 @@ import { SlEnvolope, SlLock } from "react-icons/sl";
 import { styled } from "@mui/system";
 import { useState } from "react";
 import {useLogin} from "../../hooks/useLogin"
+import { ProgressBar } from "react-loader-spinner"
 
 const FormInnerBoxes = styled("div")({
     display: "flex",
@@ -70,7 +71,19 @@ export default function LoginPage() {
                             </FormInnerBoxes>                            
                         </div>
                         <div className="flex flex-col items-center justify-center">
-                            <button type="submit" disabled={isLoading} className="w-1/3 rounded-md mt-1 bg-[#ff676a] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#ff9596] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">Login</button>
+                            <button type="submit" disabled={isLoading} 
+                            className="flex items-center justify-center w-1/3 px-3.5 py-2.5 rounded-md mt-1 bg-[#ff676a]  text-sm font-semibold text-white shadow-sm hover:bg-[#ff9596] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2">
+                                {
+                                    !isLoading ? "Login" :
+                                    <ProgressBar 
+                                        visible={true}
+                                        width= "300"
+                                        barColor="#2563eb"
+                                        borderColor="#ffffff"
+                                        ariaLabel="progress-bar-loading" 
+                                    />
+                                }
+                            </button>
                             {
                                 error && 
                                     <div className="text-red-400">

@@ -6,8 +6,7 @@ import { SlEnvolope, SlLock, SlUser, SlKey } from "react-icons/sl";
 import { styled } from "@mui/system";
 import { useState } from "react";
 import { useRegister } from "../../hooks/useRegister";
-import { ProgressBar } from "react-loader-spinner"
-
+import { ProgressBar } from "react-loader-spinner";
 const FormInnerBoxes = styled("div")({
     display: "flex",
     margin: "0.5rem 0",

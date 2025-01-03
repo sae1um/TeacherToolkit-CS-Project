@@ -6,7 +6,7 @@ const createToken = (_id) => {
     return jwt.sign({_id}, process.env.SECRET, { expiresIn: "3d"});
 }
 
-//Login specified user handler
+// Hanldes Logging in the user 
 const loginUser = async(req, res) => {
     const {email, password} = req.body;
     try{
@@ -19,7 +19,7 @@ const loginUser = async(req, res) => {
     }
 }
 
-//Resgiter Teacher handler
+// Hanldes registering in the user 
 const registerUser = async (req, res) => {
     const { firstname, lastname, email, password, role, verificationCode } = req.body;
     try{

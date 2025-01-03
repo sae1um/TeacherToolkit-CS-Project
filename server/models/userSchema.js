@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+  const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const validator = require("validator");
 
@@ -43,7 +43,6 @@ const userSchema = new Schema({
 
 // Register method
 userSchema.statics.register = async function(email, password, role, verificationCode, firstname, lastname ){
-    
     // Extra server side validation
     if(!email || !password || !role || !verificationCode || !firstname || !lastname){
         throw Error("All fields must be filled")
@@ -55,21 +54,20 @@ userSchema.statics.register = async function(email, password, role, verification
         throw Error("Password not strong enough")
     }
     
-    const exists = await this.findOne({ email });
-
     // Check if email already in db
+    const exists = await this.findOne({ email });
     if(exists){
         throw Error("Email already in use");
     }
     
+    // Check if code is correct/ in db
     const codesList = await mongoose.connection.collection("verification_codes").findOne({});
-
     if(!codesList){
         throw Error("No codes found in db");
     }
     
     // If teacher then set true else set false
-    const isTeacher = role === "teacher";
+    const isTeacher = role === "Teacher";
     // Check teacher codes if true, check students if false
     const validCodes = isTeacher ? codesList.teacher_codes : codesList.student_codes;
 
@@ -84,6 +82,7 @@ userSchema.statics.register = async function(email, password, role, verification
     // Create new user
     const user = await this.create({ firstname, lastname, email, password: hash, role});
     // user.uid = this.ObjectId;
+    
     // Sends user obj back to API
     return user;
 }

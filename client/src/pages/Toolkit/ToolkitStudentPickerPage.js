@@ -147,13 +147,13 @@ export default function ToolkitStudentPicker() {
                                     /> : <span className="text-center p-2 m-1"> {chosenStudent} </span>
                             }
                         </div>
-                        <div className="flex flex-row gap-2">
+                        <div className="flex flex-row gap-2 items-center justify-center">
                             <Button variant="outlined" onClick={() => setChosenStudent("")} >Clear</Button>
                             <Button variant="outlined" onClick={removePickedStudent} color="error">Remove Student</Button>
                         </div>
                     </div>
                 </div>
-                <div>
+                <div className="flex flex-row items-center gap-2">
                     <TextField value={newStudent} onChange={(e) => setNewStudent(e.target.value)} label="Student Name" placeholder="Enter new student" color="info" />
                     <Button onClick={addNewStudentToList} variant="contained" color="primary">Add Student</Button>
                 </div>

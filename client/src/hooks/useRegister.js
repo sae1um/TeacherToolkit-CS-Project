@@ -11,14 +11,14 @@ export const useRegister = () => {
         setIsLoading(true);
         setError(null);
 
-        // const url = "https://literate-garbanzo-9r4xwvgq5q6c9x49-3030.app.github.dev/auth/register";
-        const url = "http://localhost:3030/auth/register";
+        const url = "https://literate-garbanzo-9r4xwvgq5q6c9x49-3030.app.github.dev/auth/register";
+        // const url = "http://localhost:3030/auth/register";
 
         const response = await fetch(url, {
             method: 'POST',
             headers: { 
                 'Content-Type': 'application/json',
-                // "X-Github-Token": "ghu_6j0JjB4ZqfKGeh0jOqRD7S2OmfL5AZ0CXAwt"
+                "X-Github-Token": "ghu_6j0JjB4ZqfKGeh0jOqRD7S2OmfL5AZ0CXAwt"
             },
             body: JSON.stringify({firstname, lastname, email, password, role, verificationCode})
             

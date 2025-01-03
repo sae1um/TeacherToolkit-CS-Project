@@ -6,6 +6,7 @@ import RegisterPage from "./onboarding/Signup";
 export default function ProtectedRoute({ children, path }) {
     const { user } = useAuthContext(); // Get current user from auth context
 
+    // If no user then redirect to login or register page
     if(!user){
         if(path === "register"){
             return <RegisterPage />;
