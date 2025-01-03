@@ -24,7 +24,10 @@ app.use((req, res, next) => {
 
 // Default route for the api
 app.get("/", (req, res) => {
-    res.json("Base Routes");
+    res.json({
+        mssg: "Server Running",
+        routes: ["/auth", "/classes"]
+    });
 });
 
 /*

@@ -12,7 +12,7 @@ export const useRegister = () => {
         setError(null);
 
         // PROD URL REMOVE FOR PROJECT
-        const url = "";
+        const url = "https://teachertoolkit-cs-prod.onrender.com/auth/register";
 
         // const url = "https://literate-garbanzo-9r4xwvgq5q6c9x49-3030.app.github.dev/auth/register";
         // const url = "http://localhost:3030/auth/register";
