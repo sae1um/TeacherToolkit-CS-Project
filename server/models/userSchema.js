@@ -96,7 +96,7 @@ userSchema.statics.login = async function(email, password, role, verificationCod
     // Check if email in db
     const user = await this.findOne({email});
     if(!user){
-        throw Error("Incorrect email");
+        throw Error("No user found with email");
     }
 
     // Check password
