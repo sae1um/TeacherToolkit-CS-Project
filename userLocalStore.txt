@@ -1,0 +1,1 @@
+user :  {"status":"User found","email":"godswillerh@gmail.com","token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzdjMDExYjg0ZjVjNzVlOTMyYTQ3NjkiLCJpYXQiOjE3MzYxODQ0MTQsImV4cCI6MTczNjQ0MzYxNH0.Q4LdTTSX56BltK-wznHoT-AN2St5D7XICkHrzp2lq28","firstname":"Godswill","lastname":"Erhunmwunse","role":"teacher","uid":"677c011b84f5c75e932a4769"}
