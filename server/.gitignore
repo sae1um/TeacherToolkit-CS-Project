@@ -25,3 +25,4 @@ yarn-error.log*
 
 # Tests
 /Tests/users.json
+/Tests/data.json
