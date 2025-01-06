@@ -11,7 +11,6 @@ export const useRegister = () => {
         setIsLoading(true);
         setError(null);
 
-        // PROD URL REMOVE FOR PROJECT
         const url = "https://teachertoolkit-cs-prod.onrender.com/auth/register";
 
         // const url = "https://literate-garbanzo-9r4xwvgq5q6c9x49-3030.app.github.dev/auth/register";
