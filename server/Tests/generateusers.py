@@ -11,7 +11,7 @@ def generate_password(length = 10):
 
 users = []
 
-for _ in range(50):
+for _ in range(100):
     user = {
         "firstname": fake.first_name(),
         "lastname": fake.last_name(),
@@ -22,7 +22,7 @@ for _ in range(50):
     }
     users.append(user)
 
-with open("users.json", "w") as json_file:
+with open("data.json", "w") as json_file:
     json.dump(users, json_file, indent=4)
 
-print("User data written to 'users.json'")
+print("User data written to 'data.json'")
